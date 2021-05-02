@@ -1,67 +1,60 @@
 
+import {useState} from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 import Home from './components/pages/Home'
 import PageLayout from "./components/PageLayout"
-import Trivia from "./components/pages/TrivaQuestion"
+import QuizQuestion from "./components/pages/QuizQuestion"
+import QuizResults from './components/pages/QuizResults'
 
-function Questions() {
-  return <h2>Questions</h2>;
-}
-
-
+const sampleData = [{
+    category: "Entertainment:video----1",
+    type: "boolean",
+    difficulty: "hard",
+    question : "Some random question 1 that is not false",
+    correct_answer: "true",
+    incorrect_answer: [ 'False']
+},{
+    category: "Entertainment:video---2",
+    type: "boolean",
+    difficulty: "hard",
+    question : "Some random question 2 that is not false",
+    correct_answer: "true",
+    incorrect_answer: [ 'False']
+},
+]
 
 const WebRoute = ({ children }: {children: JSX.Element| JSX.Element[]}) => {
     return (
       <Router>
         <PageLayout>
           <Switch>{children}</Switch>
-          </PageLayout>
+        </PageLayout>
     </Router>
   );
 }
 
 function App() {
+  const [question, setQuestion] = useState(sampleData)
+  
+  
   return (
     <Router>
       <WebRoute>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/trivia">
-          <Trivia />
+        <Route exact path="/QuizQuestion">
+          <QuizQuestion triviaQuestion={ question }/>
         </Route>
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/questions">questions</Link>
-            </li>
-            <li>
-              <Link to="/results">results</Link>
-            </li>
-          </ul>
-      </nav>
-         <Switch>
-          <Route path="/results">
-            <Results />
-          </Route>
-          <Route path="/questions">
-            <Questions />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch> */}
+        <Route exact path="/QuizResults">
+          <QuizResults />
+        </Route>
       </WebRoute>
-    
  </Router>
   );
 }

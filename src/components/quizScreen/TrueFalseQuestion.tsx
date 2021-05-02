@@ -21,7 +21,6 @@ const TrueFalseQuestion = ({possibleAnswers,handleUpdate }:AnswerProps) => {
                 type="button"
                 onClick ={()=> handleUpdate('false')}
             >False</button>
-        
         </div>
     )
 }

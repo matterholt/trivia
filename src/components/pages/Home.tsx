@@ -32,7 +32,7 @@ const Home = () => {
       <h1 >Welcome to the Trivia Challenge</h1>
       <p>You will be precented with {triviaOptions.questionAmount} {triviaOptions.triviaType.typeName } questions</p>
       <p>Can you score 100</p>
-     <LinkButton linkText="Begin" toLink="/trivia"/>
+     <LinkButton linkText="Begin" toLink="/QuizQuestion"/>
   </HomeCard>
 )};
 export default Home;
