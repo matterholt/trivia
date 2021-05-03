@@ -11,15 +11,15 @@ const TrueFalseQuestion = ({possibleAnswers,handleUpdate }:AnswerProps) => {
             <button
                 name="answerTrue"
                 type="button"
-                value="true"
-                onClick ={()=> handleUpdate('true')}
+                value="True"
+                onClick ={()=> handleUpdate('True')}
                 >True</button>
         
             <button
                 name="answerFalse"
-                value="false"
+                value="False"
                 type="button"
-                onClick ={()=> handleUpdate('false')}
+                onClick ={()=> handleUpdate('False')}
             >False</button>
         </div>
     )

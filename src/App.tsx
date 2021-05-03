@@ -23,7 +23,7 @@ const sampleData = [{
     type: "boolean",
     difficulty: "hard",
     question : "Some random question 2 that is not false",
-    correct_answer: "true",
+    correct_answer: "True",
     incorrect_answer: [ 'False']
 },
 ]

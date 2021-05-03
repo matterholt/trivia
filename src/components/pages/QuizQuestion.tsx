@@ -15,13 +15,18 @@ interface TriviaQuestionProps {
     }[]
 }
 
+
 const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
     const {answeredToQuestions,setAnsweredToQuestions} = useAnsweredQuestions()
     const triviaQuestionLength = triviaQuestion.length
     const didAnswerAllQuestions = currentQuestionId === triviaQuestionLength
 
-    function updateAnsweredQuestions(userCurrentAnswer :{question: string, correct_answer: string,users_answer: string}) {
+    function updateAnsweredQuestions(userCurrentAnswer:{
+    question: string,
+    userDidAnswer: string,
+    correct_answer: string,
+    users_answer: string}) {
         // take the current displayed question, update user answer 3
         const userAnsweredQuestions = { ...userCurrentAnswer, questionId: currentQuestionId }
         
@@ -41,7 +46,8 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
         <div>
         <CurrentQuestion
             triviaQuestion={triviaQuestion[currentQuestionId]}
-                updateAnsweredQuestions={updateAnsweredQuestions} />
+             updateAnsweredQuestions={updateAnsweredQuestions}
+            />
             
             <p>{currentQuestionId + 1} of {triviaQuestionLength}
             </p>

@@ -1,3 +1,5 @@
+import userAnswerIs from '../../utils/userAnswerIs'
+
 import TrueFalseQuestion from "../quizScreen/TrueFalseQuestion"
 import QuestionCard from "../quizScreen/QuestionCard"
 
@@ -16,7 +18,7 @@ const QuizAnswerFormat = ({ questionType, possibleAnswers,handleUpdate }: Answer
         )
     }
 
-    return <p>Having difficulty formatting {questionType } question, please try again</p>
+    return <p>Having difficulty formatting {questionType} question,{ } please try again</p>
 
 }
 interface TriviaQuestionProps{
@@ -28,16 +30,29 @@ interface TriviaQuestionProps{
         correct_answer: string,
         incorrect_answer: string[]
     }
-    updateAnsweredQuestions: (userCurrentAnswer: {question: string, correct_answer: string,users_answer: string})=>void
+    updateAnsweredQuestions: (userCurrentAnswer: {
+    question: string,
+    userDidAnswer: string,
+    correct_answer: string,
+    users_answer: string})=>void
 }
-const CurrentQuestion = ({ triviaQuestion,updateAnsweredQuestions }: TriviaQuestionProps) => {
+
+
+const CurrentQuestion = ({ triviaQuestion, updateAnsweredQuestions }: TriviaQuestionProps) => {
+    
+
     const { category, question, correct_answer, incorrect_answer, type } = triviaQuestion
     
-    function handleUpdate(users_answer :string) {
+    function handleUpdate(users_answer: string) {
+
+        const userDidAnswer = userAnswerIs(users_answer,incorrect_answer )
+
+        
         updateAnsweredQuestions({
-        question,
-        correct_answer,
-        users_answer})
+            question,
+             userDidAnswer,
+            correct_answer,
+            users_answer})
     }
     
     return(

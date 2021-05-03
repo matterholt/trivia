@@ -2,16 +2,11 @@ import { Redirect } from "react-router-dom";
 import { useAnsweredQuestions } from "../../context/userAnswerContext"
 import AnsweredQuestions from "../quizResults/AnsweredQuestions"
 
-interface UserAnswer {
-    questionId: number,
-    question: string,
-    users_answer: string,
-    correct_answer: string
-}
 
 const QuizResults = () => {
     const { answeredToQuestions, setAnsweredToQuestions } = useAnsweredQuestions()
     const didClearAnswer = 0 === answeredToQuestions.length
+    const answeredCorrectly  = 3 
 
     if(didClearAnswer) {
         return (<Redirect to="/" />)
@@ -22,13 +17,10 @@ const QuizResults = () => {
         <div>
             <h2>Results Page</h2>
             <div>
-                <p>Answered question, then redirect to results</p>
-                <p>Should update a</p>
-                {JSON.stringify(answeredToQuestions)}
+                <p>You scored {answeredCorrectly}/10</p>
                 
                 <AnsweredQuestions userAnswers={answeredToQuestions} />
-                
-                <button onClick={()=>setAnsweredToQuestions([])}>Try Again</button>
+                <button onClick={()=>setAnsweredToQuestions([])}>Play Again</button>
             </div>
         </div>
     )
