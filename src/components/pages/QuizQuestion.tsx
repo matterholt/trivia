@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 
 import CurrentQuestion from "../quizScreen/CurrentQuestion"
 
+import { AnswerContextProvider, useAnsweredQuestions } from "../../context/userAnswerContext"
 interface TriviaQuestionProps {
     triviaQuestion: {
         category: string,
@@ -17,13 +18,8 @@ interface TriviaQuestionProps {
 const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
     
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
-    // const {answeredToQuestions, setAnsweredToQuestions} = useAnsweredQuestions
-
-    const [answeredToQuestions, setAnsweredToQuestions] = useState([{
-        question: "Some random question that is not false--0",
-        correct_answer: "true",
-        users_answer: "false"
-    }])
+    const answeredToQuestions = useAnsweredQuestions()
+    
 
     const triviaQuestionLength = triviaQuestion.length
     const didAnswerAllQuestions = currentQuestionId === triviaQuestionLength
@@ -34,24 +30,27 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
         
         setCurrentQuestionId(currentQuestionId + 1)
 
-        setAnsweredToQuestions(
-            ([...answeredToQuestions,userAnsweredQuestions])
-        )
+        // setAnsweredToQuestions(
+        //     ([...answeredToQuestions,userAnsweredQuestions])
+        // )
     }
 
     if (didAnswerAllQuestions) {
-        return (<Redirect to="/QuizResults" />)
-        // return (<p>{JSON.stringify(answeredToQuestions) }</p>)
+        // return (<Redirect to="/QuizResults" />)
+        return (<p>{JSON.stringify(answeredToQuestions) }</p>)
     }
 
     return (
-        <div>
+        <AnswerContextProvider>
+            
 
         <CurrentQuestion
             triviaQuestion={triviaQuestion[currentQuestionId]}
                 updateAnsweredQuestions={updateAnsweredQuestions} />
-            <p>{currentQuestionId + 1 } of {triviaQuestionLength} </p>
-        </div>
+            <p>{currentQuestionId + 1} of {triviaQuestionLength}
+            {JSON.stringify(answeredToQuestions) }
+            </p>
+        </AnswerContextProvider>
   );
 }
 export default QuizQuestion
