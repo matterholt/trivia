@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 
 import CurrentQuestion from "../quizScreen/CurrentQuestion"
 
-import { AnswerContextProvider, useAnsweredQuestions } from "../../context/userAnswerContext"
+import {useAnsweredQuestions } from "../../context/userAnswerContext"
 interface TriviaQuestionProps {
     triviaQuestion: {
         category: string,
@@ -16,11 +16,8 @@ interface TriviaQuestionProps {
 }
 
 const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
-    
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
-    const answeredToQuestions = useAnsweredQuestions()
-    
-
+    const {answeredToQuestions,setAnsweredToQuestions} = useAnsweredQuestions()
     const triviaQuestionLength = triviaQuestion.length
     const didAnswerAllQuestions = currentQuestionId === triviaQuestionLength
 
@@ -30,27 +27,25 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
         
         setCurrentQuestionId(currentQuestionId + 1)
 
-        // setAnsweredToQuestions(
-        //     ([...answeredToQuestions,userAnsweredQuestions])
-        // )
+        setAnsweredToQuestions(
+            ([...answeredToQuestions,userAnsweredQuestions])
+        )
     }
 
     if (didAnswerAllQuestions) {
-        // return (<Redirect to="/QuizResults" />)
-        return (<p>{JSON.stringify(answeredToQuestions) }</p>)
+        return (<Redirect to="/QuizResults" />)
+        // return (<p>{JSON.stringify(answeredToQuestions) }</p>)
     }
 
     return (
-        <AnswerContextProvider>
-            
-
+        <div>
         <CurrentQuestion
             triviaQuestion={triviaQuestion[currentQuestionId]}
                 updateAnsweredQuestions={updateAnsweredQuestions} />
+            
             <p>{currentQuestionId + 1} of {triviaQuestionLength}
-            {JSON.stringify(answeredToQuestions) }
             </p>
-        </AnswerContextProvider>
+        </div>
   );
 }
 export default QuizQuestion

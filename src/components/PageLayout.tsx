@@ -1,4 +1,6 @@
 import styled from '@emotion/styled'
+import { AnswerContextProvider } from "../context/userAnswerContext"
+
 
 const Layout = styled.div`
   min-height: 100vh;
@@ -10,6 +12,10 @@ const Layout = styled.div`
 `;
 
 const PageLayout= ({ children }:{children: JSX.Element| JSX.Element[]})=> {
-  return <Layout >{children}</Layout>;
+  return <Layout >
+    <AnswerContextProvider>
+      {children}
+    </AnswerContextProvider>
+    </Layout>;
 }
 export default PageLayout;
