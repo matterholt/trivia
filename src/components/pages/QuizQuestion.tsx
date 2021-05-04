@@ -1,5 +1,7 @@
-import { useState} from 'react'
+import { useState } from 'react'
 import { Redirect } from "react-router-dom";
+
+import userAnswerIs from '../../utils/userAnswerIs'
 
 import CurrentQuestion from "../quizScreen/CurrentQuestion"
 
@@ -15,41 +17,51 @@ interface TriviaQuestionProps {
     }[]
 }
 
-
 const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
+
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
+    const [userInputAnswer, setUserInputAnswer] = useState('')
+
     const {answeredToQuestions,setAnsweredToQuestions} = useAnsweredQuestions()
     const triviaQuestionLength = triviaQuestion.length
     const didAnswerAllQuestions = currentQuestionId === triviaQuestionLength
 
-    function updateAnsweredQuestions(userCurrentAnswer:{
-    question: string,
-    userDidAnswer: string,
-    correct_answer: string,
-    users_answer: string}) {
-        // take the current displayed question, update user answer 3
-        const userAnsweredQuestions = { ...userCurrentAnswer, questionId: currentQuestionId }
-        
-        setCurrentQuestionId(currentQuestionId + 1)
 
+    function confirmAnswer() {
+        console.log('fired')
+        const { question, correct_answer, incorrect_answer } = triviaQuestion[currentQuestionId]
+
+        const userDidAnswer = userAnswerIs(userInputAnswer,incorrect_answer )
+        const userAnsweredQuestions = {userDidAnswer, correctAnswer: correct_answer, question, questionId:currentQuestionId, userInputAnswer  }
+
+        setCurrentQuestionId(currentQuestionId + 1)
+        setUserInputAnswer("")
         setAnsweredToQuestions(
             ([...answeredToQuestions,userAnsweredQuestions])
         )
     }
 
+
+
     if (didAnswerAllQuestions) {
         return (<Redirect to="/QuizResults" />)
-        // return (<p>{JSON.stringify(answeredToQuestions) }</p>)
+    }
+
+    function handleAnsweredUpdate(input:string) {
+        setUserInputAnswer(input )
     }
 
     return (
         <div>
         <CurrentQuestion
-            triviaQuestion={triviaQuestion[currentQuestionId]}
-             updateAnsweredQuestions={updateAnsweredQuestions}
+                triviaQuestion={triviaQuestion[currentQuestionId]}
+                handleAnsweredUpdate= {handleAnsweredUpdate}
             />
-            
-            <p>{currentQuestionId + 1} of {triviaQuestionLength}
+            <button
+                disabled={userInputAnswer === "" ?  true : false }
+                onClick={confirmAnswer}>NEXT</button>
+            <p>
+                {currentQuestionId + 1} of {triviaQuestionLength}
             </p>
         </div>
   );

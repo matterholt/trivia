@@ -1,10 +1,10 @@
 
 interface AnswerProps{
     possibleAnswers: string[],
-        handleUpdate :(users_answer :string)=>void
+        handleAnsweredUpdate :(users_answer :string)=>void
 }
 
-const TrueFalseQuestion = ({possibleAnswers,handleUpdate }:AnswerProps) => {
+const TrueFalseQuestion = ({possibleAnswers,handleAnsweredUpdate }:AnswerProps) => {
     return (
                 
         <div>
@@ -12,14 +12,14 @@ const TrueFalseQuestion = ({possibleAnswers,handleUpdate }:AnswerProps) => {
                 name="answerTrue"
                 type="button"
                 value="True"
-                onClick ={()=> handleUpdate('True')}
+                onClick ={()=> handleAnsweredUpdate('True')}
                 >True</button>
         
             <button
                 name="answerFalse"
                 value="False"
                 type="button"
-                onClick ={()=> handleUpdate('False')}
+                onClick ={()=> handleAnsweredUpdate('False')}
             >False</button>
         </div>
     )
