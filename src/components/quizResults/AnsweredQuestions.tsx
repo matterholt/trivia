@@ -2,33 +2,39 @@
 
 interface UserAnswer {
     userAnswerInput:{
-    questionId: number,
-    question: string,
-    users_answer: string,
-    correct_answer: string,
-    userDidAnswer :string
+        questionId: number,
+        question: string,
+        userDidAnswer: string,
+        correctAnswer: string,
+        userInputAnswer:string,
     }
 }
 
+
+
 const Answered = ({userAnswerInput}:UserAnswer)=>{
-    const { questionId, question, users_answer, correct_answer, userDidAnswer } = userAnswerInput
+    const { questionId,
+        question,
+        userDidAnswer,
+        correctAnswer,
+        userInputAnswer } = userAnswerInput
     return (
         <li key={questionId}>
-            <p>{question}</p>
-            <p>{users_answer}</p>
-            <p>{correct_answer}</p>
-            <p>{userDidAnswer }</p>
+            <p>Q:{question}</p>
+            <p>UA:{userInputAnswer}</p>
+            <p>CA:{correctAnswer}</p>
+            <p>iscorrect:{userDidAnswer }</p>
         </li>
     )
 }
 
 interface UserAnswers {
     userAnswers:{
-    questionId: number,
-    question: string,
-    users_answer: string,
-        correct_answer: string,
-    userDidAnswer :string
+        questionId: number,
+        question: string,
+        userDidAnswer: string,
+        correctAnswer: string,
+        userInputAnswer:string,
     }[]
 }
 

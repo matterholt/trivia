@@ -5,11 +5,16 @@ const AnswerContext = React.createContext(undefined);
 
 function AnswerContextProvider({ children }) {
 
-    const [answeredToQuestions, setAnsweredToQuestions] = useState([{
-        question: "Some random question that is not false--0",
-        correct_answer: "true",
-        users_answer: "false"
-        }]);
+
+    const [answeredToQuestions, setAnsweredToQuestions] = useState([
+      {
+        userDidAnswer: "correct",
+          correctAnswer: "True",
+          question: "Some random question 1 that is not false",
+         questionId: 1000,
+          userInputAnswer: "True"
+      },
+    ]);
 
         return (
           <AnswerContext.Provider value={{answeredToQuestions,setAnsweredToQuestions}}>

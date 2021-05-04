@@ -18,7 +18,7 @@ const QuizResults = () => {
             <h2>Results Page</h2>
             <div>
                 <p>You scored {answeredCorrectly}/10</p>
-                
+    
                 <AnsweredQuestions userAnswers={answeredToQuestions} />
                 <button onClick={()=>setAnsweredToQuestions([])}>Play Again</button>
             </div>
