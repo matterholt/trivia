@@ -1,26 +1,24 @@
+import AnswerButton from "./AnswerButton"
 
 interface AnswerProps{
-    possibleAnswers: string[],
+    userInputAnswer:string,
         handleAnsweredUpdate :(users_answer :string)=>void
 }
 
-const TrueFalseQuestion = ({possibleAnswers,handleAnsweredUpdate }:AnswerProps) => {
-    return (
-                
+const TrueFalseQuestion = ({userInputAnswer,handleAnsweredUpdate }:AnswerProps) => {
+    return (   
         <div>
-            <button
-                name="answerTrue"
-                type="button"
-                value="True"
-                onClick ={()=> handleAnsweredUpdate('True')}
-                >True</button>
-        
-            <button
-                name="answerFalse"
-                value="False"
-                type="button"
-                onClick ={()=> handleAnsweredUpdate('False')}
-            >False</button>
+              <AnswerButton
+                label="True"
+                selectValue={userInputAnswer }
+                handleAnsweredUpdate={ handleAnsweredUpdate }
+                 />
+
+            <AnswerButton
+                label="False"
+                selectValue={userInputAnswer }
+                handleAnsweredUpdate={ handleAnsweredUpdate }
+                 />
         </div>
     )
 }

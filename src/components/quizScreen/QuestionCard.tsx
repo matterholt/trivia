@@ -7,7 +7,6 @@ interface questionCardProps {
 const QuestionCard = ({ category, question, children }: questionCardProps) =>{
 return(
     <div>
-
         <h2>{ category}</h2>
             <p>{question}</p>
             <div>
