@@ -8,14 +8,12 @@ const HomeCard = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  color: var(--main-Color-dark);
-  background: linear-gradient(137deg, #f1f1f1, #afafaf);
-  padding: 20px;
+  padding:10px 30px;
   margin: 5px;
   border-radius: 10px;
-  background-color: white;
-  width: 80vw;
+  background: rgba(255, 255, 255, .7);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 `
 
 
@@ -31,8 +29,8 @@ const Home = () => {
   <HomeCard>
       <h1 >Welcome to the Trivia Challenge</h1>
       <p>You will be precented with {triviaOptions.questionAmount} {triviaOptions.triviaType.typeName } questions</p>
-      <p>Can you score 100%</p>
      <LinkButton linkText="Begin" toLink="/QuizQuestion"/>
+      <p>Can you score 100%</p>
   </HomeCard>
 )};
 export default Home;

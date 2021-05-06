@@ -3,26 +3,24 @@ import { Link } from "react-router-dom";
 
 
 const Container = styled.div`
-  font-size: 2.5rem;
   padding: 1em 3.2em;
-  text-decoration: none;
   text-transform: uppercase;
   border-radius: 5px;
   transition: scale 100ms ease-in-out;
-  width: 25%;
   text-align: center;
   margin: 20px;
-  border: 2px solid var(--main-Color-dark);
-  color: var(--main-Color-dark);
-  background-color: #c1c6c9;
+  background-color: #2c4869;
+    color: white;
   &:hover {
-    scale: 1.05;
+    scale: 1.01;
     box-shadow: 6px 4px 7px #494949;
     background-color: #d5d7d9;
+    color:#2c4869;
     cursor: pointer;
   }
   &:active{
-      color: blue;
+    color: #fff;
+    background-color: #9caabb;
   }
 `;
 
@@ -34,10 +32,10 @@ interface LinkButtonProps {
 
 const LinkButton = ({ linkText, toLink }:LinkButtonProps) => (
     
-    <Link to={toLink }>
+    <Link to={toLink } style={{ textDecoration: 'none' }}>
         <Container>
             {linkText}
         </Container>
-        </Link>
+    </Link>
     )
 export default LinkButton

@@ -21,8 +21,13 @@ const Component: FC<ComponentProps> = ({
 interface StyledProps{
     primary:boolean
 }
-const AnswerButtonStyle = styled(Component)<StyledProps>`
-    background-color: ${({primary}:any) =>primary ? 'hotpink' : 'turquoise'};
+const AnswerButtonStyle = styled(Component) <StyledProps>`
+    border:none;
+    border-radius: 15px;
+    font-size:1.5rem;
+    padding:5px 20px;
+    background-color: ${({ primary }: any) => primary ? '#b8ffb2' : 'white'};
+    
     `
 
 interface AnswerButtonProps{
@@ -31,7 +36,7 @@ interface AnswerButtonProps{
     handleAnsweredUpdate :(users_answer :string)=>void
 }
     
-const AnswerButton = ({ label,selectValue,handleAnsweredUpdate }:AnswerButtonProps) => {
+const AnswerButton: FC<AnswerButtonProps> = ({ label,selectValue,handleAnsweredUpdate }) => {
     const isSelected = label === selectValue
     return (
         <AnswerButtonStyle

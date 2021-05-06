@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Redirect } from "react-router-dom";
 import { useAnsweredQuestions } from "../../context/userAnswerContext"
 import AnsweredQuestions from "../quizResults/AnsweredQuestions"
@@ -14,14 +15,19 @@ const QuizResults = () => {
         return (<Redirect to="/" />)
     }
 
+    // useEffect(() => {
+    //     window.addEventListener('popstate', (event) => {
+    //         alert("You message");
+    //         });
+    // },[])
+
 
     return (
         <div>
             <h2>Results Page</h2>
             <div>
                 <p>You scored {answeredCorrectly}/{totalQuestionCount }</p>
-                {/* { JSON.stringify(answeredToQuestions)} */}
-    
+
                 <AnsweredQuestions userAnswers={answeredToQuestions} />
                 <button onClick={()=>setAnsweredToQuestions([])}>Play Again</button>
             </div>

@@ -1,5 +1,4 @@
 
-
 import TrueFalseQuestion from "../quizScreen/TrueFalseQuestion"
 import QuestionCard from "../quizScreen/QuestionCard"
 
@@ -24,6 +23,8 @@ const QuizAnswerFormat = ({userInputAnswer, questionType, possibleAnswers,handle
     return <p>Having difficulty formatting {questionType} question, please try again</p>
 
 }
+
+
 interface TriviaQuestionProps{
     triviaQuestion: {
         category: string,

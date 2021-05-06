@@ -1,10 +1,8 @@
-import { useState } from 'react'
+import { useState } from "react"
 import { Redirect } from "react-router-dom";
 
-import userAnswerIs from '../../utils/userAnswerIs'
-
+import userAnswerIs from "../../utils/userAnswerIs"
 import CurrentQuestion from "../quizScreen/CurrentQuestion"
-
 import {useAnsweredQuestions } from "../../context/userAnswerContext"
 interface TriviaQuestionProps {
     triviaQuestion: {
@@ -17,6 +15,11 @@ interface TriviaQuestionProps {
     }[]
 }
 
+
+
+
+
+
 const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
 
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
@@ -28,7 +31,7 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
 
 
     function confirmAnswer() {
-        console.log('fired')
+
         const { question, correct_answer, incorrect_answer } = triviaQuestion[currentQuestionId]
 
         const userDidAnswer = userAnswerIs(userInputAnswer,incorrect_answer )
@@ -40,9 +43,6 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
             ([...answeredToQuestions,userAnsweredQuestions])
         )
     }
-
-
-
     if (didAnswerAllQuestions) {
         return (<Redirect to="/QuizResults" />)
     }
@@ -53,10 +53,12 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
 
     return (
         <div>
-        <CurrentQuestion
+            <CurrentQuestion
+                userInputAnswer={userInputAnswer}
                 triviaQuestion={triviaQuestion[currentQuestionId]}
                 handleAnsweredUpdate= {handleAnsweredUpdate}
             />
+            {userInputAnswer}
             <button
                 disabled={userInputAnswer === "" ?  true : false }
                 onClick={confirmAnswer}>NEXT</button>
