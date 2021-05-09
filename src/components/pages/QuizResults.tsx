@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+
 import { Redirect } from "react-router-dom";
 import { useAnsweredQuestions } from "../../context/userAnswerContext"
 import AnsweredQuestions from "../quizResults/AnsweredQuestions"

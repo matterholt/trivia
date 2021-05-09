@@ -1,9 +1,13 @@
 import { useState } from "react"
 import { Redirect } from "react-router-dom";
+import styled from '@emotion/styled'
 
 import userAnswerIs from "../../utils/userAnswerIs"
 import CurrentQuestion from "../quizScreen/CurrentQuestion"
-import {useAnsweredQuestions } from "../../context/userAnswerContext"
+import ActionButton from "../ActionButton"
+import NextArrowSVG from '../NextArrowSVG'
+
+import { useAnsweredQuestions } from "../../context/userAnswerContext"
 interface TriviaQuestionProps {
     triviaQuestion: {
         category: string,
@@ -15,16 +19,19 @@ interface TriviaQuestionProps {
     }[]
 }
 
-
-
-
+const QuestionLayout = styled.div`
+display:grid;
+row-gap: 15px;
+grid-template-rows: 1fr 50px 25px;
+    align-items: center;
+    justify-items: center;
+`
 
 
 const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
 
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
     const [userInputAnswer, setUserInputAnswer] = useState('')
-
     const {answeredToQuestions,setAnsweredToQuestions} = useAnsweredQuestions()
     const triviaQuestionLength = triviaQuestion.length
     const didAnswerAllQuestions = currentQuestionId === triviaQuestionLength
@@ -52,20 +59,26 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
     }
 
     return (
-        <div>
+        <QuestionLayout>
             <CurrentQuestion
                 userInputAnswer={userInputAnswer}
                 triviaQuestion={triviaQuestion[currentQuestionId]}
                 handleAnsweredUpdate= {handleAnsweredUpdate}
             />
-            {userInputAnswer}
-            <button
-                disabled={userInputAnswer === "" ?  true : false }
-                onClick={confirmAnswer}>NEXT</button>
-            <p>
-                {currentQuestionId + 1} of {triviaQuestionLength}
-            </p>
-        </div>
+                <p>
+                    {currentQuestionId + 1} of {triviaQuestionLength}
+                </p>
+            <ActionButton
+                styleAttributes = {`border:none; background:none;`}
+                isDisabled={userInputAnswer === ""}
+                clickAction={confirmAnswer}
+                name="Next buttons"
+            >
+            <NextArrowSVG isDisabled={userInputAnswer === ""}/>
+            </ActionButton>
+            
+
+        </QuestionLayout>
   );
 }
 export default QuizQuestion

@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styled from '@emotion/styled'
+import { css } from '@emotion/react'
 
 interface ComponentProps {
   className?: string
@@ -19,15 +20,33 @@ const Component: FC<ComponentProps> = ({
     >{label}</button>
     
 interface StyledProps{
-    primary:boolean
+    isSelected:boolean
 }
+
+const selected  = () => css`
+     color: white;
+    background-color: var(--main-blue);
+    border: 2px solid #00000073;
+    box-shadow:  4px 5px 9px #0000004a;
+  `
+const base = () => css`
+    color: var(--main-blue);
+    background-color:   white;
+    border:2px solid gray;
+    box-shadow: none;
+`
+
 const AnswerButtonStyle = styled(Component) <StyledProps>`
     border:none;
     border-radius: 15px;
     font-size:1.5rem;
     padding:5px 20px;
-    background-color: ${({ primary }: any) => primary ? '#b8ffb2' : 'white'};
-    
+    ${({ isSelected }: any) => isSelected ? selected : base}
+  &:hover {
+    background-color: var(--main-blue);
+    color:var(--main-ltBlue);
+    cursor: pointer;
+  }
     `
 
 interface AnswerButtonProps{
@@ -41,7 +60,7 @@ const AnswerButton: FC<AnswerButtonProps> = ({ label,selectValue,handleAnsweredU
     return (
         <AnswerButtonStyle
             handleAnsweredUpdate={handleAnsweredUpdate}
-            primary={isSelected}
+            isSelected={isSelected}
             label={ label}
         />
     )

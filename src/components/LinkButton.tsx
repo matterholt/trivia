@@ -9,18 +9,18 @@ const Container = styled.div`
   transition: scale 100ms ease-in-out;
   text-align: center;
   margin: 20px;
-  background-color: #2c4869;
+  background-color: var(--main-blue);
     color: white;
   &:hover {
     scale: 1.01;
     box-shadow: 6px 4px 7px #494949;
-    background-color: #d5d7d9;
-    color:#2c4869;
+    background-color: var(--main-lite);
+    color: var(--main-blue);
     cursor: pointer;
   }
   &:active{
     color: #fff;
-    background-color: #9caabb;
+    background-color: var(--main-ltBlue);
   }
 `;
 
