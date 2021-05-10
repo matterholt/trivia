@@ -2,7 +2,12 @@ import styled from '@emotion/styled'
 
 const ContainerStyle = styled.div`
 background-color:white;
-display:flex;
+display:grid;
+align-items: center;
+justify-items: center;
+grid-template-columns: 1fr 150px;
+grid-template-rows: 1fr 50px;
+border-radius: 5px;
 
 `
 
