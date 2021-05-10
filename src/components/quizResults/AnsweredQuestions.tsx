@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 
 
 interface UserAnswer {
@@ -38,12 +39,26 @@ interface UserAnswers {
     }[]
 }
 
+// copied from another place .. should 
+const ResultContainer = styled.ul`
+padding: 15px 25px;
+border-radius: 15px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background: rgba(255, 255, 255, .7);
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+list-style:none;
+`;
+
 const AnsweredQuestions = ({ userAnswers }:UserAnswers) => {
  
     return (
-        <ul>
+        <ResultContainer>
             {userAnswers.map((x) => <Answered userAnswerInput={x } />)}
-        </ul>
+        </ResultContainer>
         
 
     )

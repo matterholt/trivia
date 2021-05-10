@@ -69,7 +69,7 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
                     {currentQuestionId + 1} of {triviaQuestionLength}
                 </p>
             <ActionButton
-                styleAttributes = {`border:none; background:none;`}
+                styleAttributes = {`border:none; background:none; cursor: pointer;`}
                 isDisabled={userInputAnswer === ""}
                 clickAction={confirmAnswer}
                 name="Next buttons"
