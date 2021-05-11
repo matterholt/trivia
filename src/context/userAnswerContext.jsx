@@ -1,27 +1,26 @@
 import React, { useState } from 'react'
 
-
-const AnswerContext = React.createContext(undefined);
+const AnswerContext = React.createContext(undefined)
 
 function AnswerContextProvider({ children }) {
-
-    const [answeredToQuestions, setAnsweredToQuestions] = useState([]);
-        return (
-          <AnswerContext.Provider value={{answeredToQuestions,setAnsweredToQuestions}}>
+    const [answeredToQuestions, setAnsweredToQuestions] = useState([])
+    return (
+        <AnswerContext.Provider
+            value={{ answeredToQuestions, setAnsweredToQuestions }}
+        >
             {children}
-          </AnswerContext.Provider>
-    );
+        </AnswerContext.Provider>
+    )
 }
-        
+
 function useAnsweredQuestions() {
-    const context = React.useContext(AnswerContext);
+    const context = React.useContext(AnswerContext)
     if (context === undefined) {
         throw new Error(
-          "useAnsweredQuestions must be used within a AnswerContextProvider"
-        );
+            'useAnsweredQuestions must be used within a AnswerContextProvider'
+        )
     }
-    return context;
+    return context
 }
 
-export { AnswerContextProvider, useAnsweredQuestions };
-
+export { AnswerContextProvider, useAnsweredQuestions }

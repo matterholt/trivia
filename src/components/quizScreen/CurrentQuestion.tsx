@@ -1,57 +1,67 @@
+import TrueFalseQuestion from '../quizScreen/TrueFalseQuestion'
+import QuestionCard from '../quizScreen/QuestionCard'
 
-import TrueFalseQuestion from "../quizScreen/TrueFalseQuestion"
-import QuestionCard from "../quizScreen/QuestionCard"
-
-interface AnswerProps{
-    questionType: string,
-    userInputAnswer:string,
-    possibleAnswers: string[],
-    handleAnsweredUpdate :(users_answer :string)=>void
+interface AnswerProps {
+    questionType: string
+    userInputAnswer: string
+    possibleAnswers: string[]
+    handleAnsweredUpdate: (users_answer: string) => void
 }
 
-const QuizAnswerFormat = ({userInputAnswer, questionType, possibleAnswers,handleAnsweredUpdate }: AnswerProps) => {
-    // Controls the type of question layout that user has decided --Future Feature-- 
+const QuizAnswerFormat = ({
+    userInputAnswer,
+    questionType,
+    possibleAnswers,
+    handleAnsweredUpdate,
+}: AnswerProps) => {
+    // Controls the type of question layout that user has decided --Future Feature--
 
-    if (questionType === "boolean"){
+    if (questionType === 'boolean') {
         return (
             <TrueFalseQuestion
                 handleAnsweredUpdate={handleAnsweredUpdate}
-                userInputAnswer={userInputAnswer} />
+                userInputAnswer={userInputAnswer}
+            />
         )
     }
 
-    return <p>Having difficulty formatting {questionType} question, please try again</p>
-
+    return (
+        <p>
+            Having difficulty formatting {questionType} question, please try
+            again
+        </p>
+    )
 }
 
-
-interface TriviaQuestionProps{
+interface TriviaQuestionProps {
     triviaQuestion: {
-        category: string,
-        type: string,
-        question : string,
-        correct_answer: string,
+        category: string
+        type: string
+        question: string
+        correct_answer: string
         incorrect_answers: string[]
     }
-    userInputAnswer :string,
-    handleAnsweredUpdate:(users_answer :string)=>void
+    userInputAnswer: string
+    handleAnsweredUpdate: (users_answer: string) => void
 }
 
+const CurrentQuestion = ({
+    userInputAnswer,
+    triviaQuestion,
+    handleAnsweredUpdate,
+}: TriviaQuestionProps) => {
+    const { category, question, correct_answer, incorrect_answers, type } =
+        triviaQuestion
 
-const CurrentQuestion = ({userInputAnswer, triviaQuestion,handleAnsweredUpdate }: TriviaQuestionProps) => {
-    const { category, question, correct_answer, incorrect_answers, type } = triviaQuestion
-    
-    
-    return(
-        <QuestionCard category={category} question={question }>
+    return (
+        <QuestionCard category={category} question={question}>
             <QuizAnswerFormat
-                userInputAnswer ={userInputAnswer}
-                handleAnsweredUpdate={handleAnsweredUpdate }
-                questionType={ type }
-                possibleAnswers={[...incorrect_answers,correct_answer ] }
-                 />
-      </QuestionCard>
-      
-      )
+                userInputAnswer={userInputAnswer}
+                handleAnsweredUpdate={handleAnsweredUpdate}
+                questionType={type}
+                possibleAnswers={[...incorrect_answers, correct_answer]}
+            />
+        </QuestionCard>
+    )
 }
-export default CurrentQuestion;
+export default CurrentQuestion

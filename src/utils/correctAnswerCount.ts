@@ -1,23 +1,21 @@
-
 interface userQuestionInputsProps {
-  userDidAnswer: string;
-  userQuestionInputs: {
-    userDidAnswer: string,
-    correctAnswer: string,
-    question: string,
-    questionId: number,
-    userInputAnswer:string,
-  }
+    userDidAnswer: string
+    userQuestionInputs: {
+        userDidAnswer: string
+        correctAnswer: string
+        question: string
+        questionId: number
+        userInputAnswer: string
+    }
 }
 
-function correctAnswerCount(userQuestionInputs:userQuestionInputsProps[]) {
+function correctAnswerCount(userQuestionInputs: userQuestionInputsProps[]) {
     const userAnswers = userQuestionInputs
-      .map((question) => {
-        return question.userDidAnswer;
-      })
-        .filter((qCorrect) => qCorrect === "correct")
-        .length;
+        .map((question) => {
+            return question.userDidAnswer
+        })
+        .filter((qCorrect) => qCorrect === 'correct').length
     return userAnswers
 }
 
-export default correctAnswerCount;
+export default correctAnswerCount

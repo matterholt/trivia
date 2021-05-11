@@ -1,12 +1,10 @@
-
 import HeaderContainer from './HeaderContainer'
-    import ActionButton from "../general/ActionButton"
+import ActionButton from '../general/ActionButton'
 
-
-interface ResultsHeaderProps{
-    answeredCorrectly : number
-    totalQuestionCount: number  
-    setAnsweredToQuestions: ([])=> void
+interface ResultsHeaderProps {
+    answeredCorrectly: number
+    totalQuestionCount: number
+    setAnsweredToQuestions: ([]) => void
 }
 const defaultButtonStyle = `
 grid-column: 2;
@@ -32,17 +30,26 @@ grid-row: 1 / span2;
     background-color: var(--main-ltBlue);
   }
 `
-const ResultsHeader = ({answeredCorrectly,totalQuestionCount ,setAnsweredToQuestions}:ResultsHeaderProps) => {
-    return(
+const ResultsHeader = ({
+    answeredCorrectly,
+    totalQuestionCount,
+    setAnsweredToQuestions,
+}: ResultsHeaderProps) => {
+    return (
         <HeaderContainer>
             <h2>Results Page</h2>
-             <p>You scored {answeredCorrectly}/{totalQuestionCount}</p>
+            <p>
+                You scored {answeredCorrectly}/{totalQuestionCount}
+            </p>
             <ActionButton
-                styleAttributes = {defaultButtonStyle}
+                styleAttributes={defaultButtonStyle}
                 isdisabled={false}
-                clickAction={()=>setAnsweredToQuestions([])}
+                clickAction={() => setAnsweredToQuestions([])}
                 name="Play Again"
-                >Play<br/> Again </ActionButton>
+            >
+                Play
+                <br /> Again{' '}
+            </ActionButton>
         </HeaderContainer>
     )
 }

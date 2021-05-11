@@ -31,5 +31,7 @@ user selected answer is in the incorrect_answer array.
 
 #TODO
 
-- [] typescript on context file
-- [] typescript on custom hook useTriviaData
+- [ ] typescript on context file
+- [ ] typescript on custom hook useTriviaData
+- [ ] Write test with react testing library
+- [ ] 

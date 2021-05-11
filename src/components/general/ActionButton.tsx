@@ -6,27 +6,35 @@ interface ActionButtonProps {
     styleAttributes: string
     clickAction: () => void
     isdisabled: boolean
-    children : React.ReactNode
+    children: React.ReactNode
 }
 
-const dynamicStyle = ({customStyle}: {customStyle:string}) =>
-  css`
-    ${customStyle};
-  `
+const dynamicStyle = ({ customStyle }: { customStyle: string }) =>
+    css`
+        ${customStyle};
+    `
 
 const CustomButton = styled.button`
-${dynamicStyle}
+    ${dynamicStyle}
 `
 
-const ActionButton = ({ name,styleAttributes,clickAction, isdisabled,children }: ActionButtonProps) => {
-    return(
+const ActionButton = ({
+    name,
+    styleAttributes,
+    clickAction,
+    isdisabled,
+    children,
+}: ActionButtonProps) => {
+    return (
         <CustomButton
-            customStyle={styleAttributes }
-            name={name }
-            disabled={isdisabled?  true : false }
-            onClick={clickAction}>
+            customStyle={styleAttributes}
+            name={name}
+            disabled={isdisabled ? true : false}
+            onClick={clickAction}
+        >
             {children}
-    </CustomButton>
-)}
-            
+        </CustomButton>
+    )
+}
+
 export default ActionButton
