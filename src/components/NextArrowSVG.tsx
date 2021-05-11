@@ -1,11 +1,11 @@
 import * as React from "react"
 
-const isDisabled = { lineColor: 'var(--main-blue)', fillColor: "var(--main-ltBlue)" }
+const isdisabled = { lineColor: 'var(--main-blue)', fillColor: "var(--main-ltBlue)" }
 const able = { lineColor: 'var(--main-blue)', fillColor: "white" }
 
 
 function NextArrowSVG(props: any) {
-  const { lineColor, fillColor } = props.isDisabled ? isDisabled :  able
+  const { lineColor, fillColor } = props.isdisabled ? isdisabled :  able
   
 
   

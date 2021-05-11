@@ -31,7 +31,7 @@ interface TriviaQuestionProps{
         type: string,
         question : string,
         correct_answer: string,
-        incorrect_answer: string[]
+        incorrect_answers: string[]
     }
     userInputAnswer :string,
     handleAnsweredUpdate:(users_answer :string)=>void
@@ -39,7 +39,7 @@ interface TriviaQuestionProps{
 
 
 const CurrentQuestion = ({userInputAnswer, triviaQuestion,handleAnsweredUpdate }: TriviaQuestionProps) => {
-    const { category, question, correct_answer, incorrect_answer, type } = triviaQuestion
+    const { category, question, correct_answer, incorrect_answers, type } = triviaQuestion
     
     
     return(
@@ -48,7 +48,7 @@ const CurrentQuestion = ({userInputAnswer, triviaQuestion,handleAnsweredUpdate }
                 userInputAnswer ={userInputAnswer}
                 handleAnsweredUpdate={handleAnsweredUpdate }
                 questionType={ type }
-                possibleAnswers={[...incorrect_answer,correct_answer ] }
+                possibleAnswers={[...incorrect_answers,correct_answer ] }
                  />
       </QuestionCard>
       

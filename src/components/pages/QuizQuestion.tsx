@@ -15,7 +15,7 @@ interface TriviaQuestionProps {
         difficulty: string,
         question: string,
         correct_answer: string,
-        incorrect_answer: string[]
+        incorrect_answers: string[]
     }[]
 }
 
@@ -33,15 +33,18 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
     const [userInputAnswer, setUserInputAnswer] = useState('')
     const {answeredToQuestions,setAnsweredToQuestions} = useAnsweredQuestions()
-    const triviaQuestionLength = triviaQuestion.length
+    const triviaQuestionLength = triviaQuestion.length 
     const didAnswerAllQuestions = currentQuestionId === triviaQuestionLength
 
+    if(!triviaQuestionLength) {
+        return (<Redirect to="/" />)
+    }
 
     function confirmAnswer() {
 
-        const { question, correct_answer, incorrect_answer } = triviaQuestion[currentQuestionId]
+        const { question, correct_answer, incorrect_answers } = triviaQuestion[currentQuestionId]
 
-        const userDidAnswer = userAnswerIs(userInputAnswer,incorrect_answer )
+        const userDidAnswer = userAnswerIs(userInputAnswer,incorrect_answers )
         const userAnsweredQuestions = {userDidAnswer, correctAnswer: correct_answer, question, questionId:currentQuestionId, userInputAnswer  }
 
         setCurrentQuestionId(currentQuestionId + 1)
