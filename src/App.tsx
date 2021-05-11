@@ -7,26 +7,10 @@ import {
 } from "react-router-dom";
 
 import Home from './components/pages/Home'
-import PageLayout from "./components/PageLayout"
+import PageLayout from "./components/general/PageLayout"
 import QuizQuestion from "./components/pages/QuizQuestion"
 import QuizResults from './components/pages/QuizResults'
 
-const sampleData = [{
-    category: "Entertainment:video----1",
-    type: "boolean",
-    difficulty: "hard",
-    question : "Some random question 1 that is not false",
-    correct_answer: "True",
-    incorrect_answer: [ 'False']
-},{
-    category: "Entertainment:video---2",
-    type: "boolean",
-    difficulty: "hard",
-    question : "Some random question 2 that is not false",
-    correct_answer: "True",
-    incorrect_answer: [ 'False']
-},
-]
 
 const WebRoute = ({ children }: {children: JSX.Element| JSX.Element[]}) => {
     return (
