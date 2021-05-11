@@ -8,7 +8,6 @@ const Layout = styled.div`
   display: grid;
   place-items: center;
   font-size: calc(10px + 2vmin);
-
 `;
 
 const bgImage = {

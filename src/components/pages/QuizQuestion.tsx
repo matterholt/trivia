@@ -20,9 +20,9 @@ interface TriviaQuestionProps {
 }
 
 const QuestionLayout = styled.div`
-display:grid;
-row-gap: 15px;
-grid-template-rows: 1fr 50px 25px;
+    display:grid;
+    row-gap: 15px;
+    grid-template-rows: 1fr 50px 25px;
     align-items: center;
     justify-items: center;
 `
@@ -70,14 +70,12 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
                 </p>
             <ActionButton
                 styleAttributes = {`border:none; background:none; cursor: pointer;`}
-                isDisabled={userInputAnswer === ""}
+                isdisabled={userInputAnswer === ""}
                 clickAction={confirmAnswer}
                 name="Next buttons"
             >
-            <NextArrowSVG isDisabled={userInputAnswer === ""}/>
+            <NextArrowSVG isdisabled={userInputAnswer === ""}/>
             </ActionButton>
-            
-
         </QuestionLayout>
   );
 }

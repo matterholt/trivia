@@ -5,7 +5,7 @@ interface ActionButtonProps {
     name: string
     styleAttributes: string
     clickAction: () => void
-    isDisabled: boolean
+    isdisabled: boolean
     children : React.ReactNode
 }
 
@@ -18,12 +18,12 @@ const CustomButton = styled.button`
 ${dynamicStyle}
 `
 
-const ActionButton = ({ name,styleAttributes,clickAction, isDisabled,children }: ActionButtonProps) => {
+const ActionButton = ({ name,styleAttributes,clickAction, isdisabled,children }: ActionButtonProps) => {
     return(
         <CustomButton
             customStyle={styleAttributes }
             name={name }
-            disabled={isDisabled?  true : false }
+            disabled={isdisabled?  true : false }
             onClick={clickAction}>
             {children}
     </CustomButton>
