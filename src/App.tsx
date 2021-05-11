@@ -46,7 +46,7 @@ function App() {
     <Router>
       <WebRoute>
         <Route exact path="/">
-          <Home />
+          <Home trivia={question} triviaUpdate= {setQuestion}/>
         </Route>
         <Route exact path="/QuizQuestion">
           <QuizQuestion triviaQuestion={ question }/>
