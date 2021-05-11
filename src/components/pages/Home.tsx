@@ -2,8 +2,7 @@ import styled from '@emotion/styled'
 import { Redirect } from "react-router-dom";
 
 import useTriviaData from '../../hooks/useTriviaData'
-
-import LinkButton from '../LinkButton'
+import StartButton from '../home/StartButton'
 
 const HomeCard = styled.div`
   display: flex;
@@ -33,20 +32,20 @@ const Home = ({ setQuestion }: {setQuestion:any}) => {
       <HomeCard>
         <h1 >Welcome to the Trivia Challenge</h1>
         <p>You will be precented with {triviaOptions.questionAmount} {triviaOptions.triviaType.typeName} questions</p>
-        <button onClick={fetchData(triviaOptions)}>Begin</button>
+        <StartButton buttonText="Begin"  onClick={()=>fetchData(triviaOptions)}/>
         <p>Can you score 100%</p>
       </HomeCard>
     )
   };
   if (state.status === "pending") {
+    console.log('it is pending request')
+      return(
     <HomeCard>
       <h2>Getting Questions Ready</h2>
     </HomeCard>
-  }
+  )}
   if (state.status === "success") {
-    console.log(state.triviaQuestions)
-
-setQuestion(state.triviaQuestions)
+   setQuestion(state.triviaQuestions)
    return <Redirect to="/QuizQuestion" />
   }
 
