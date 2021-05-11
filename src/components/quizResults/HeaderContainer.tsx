@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const ContainerStyle = styled.div`
+const ContainerStyle = styled.header`
 background-color:white;
 display:grid;
 align-items: center;
@@ -11,7 +11,7 @@ border-radius: 5px;
 
 `
 
-const ResultsContainer = ({children}:{children: React.ReactNode}) => {
+const HeaderContainer = ({children}:{children: React.ReactNode}) => {
     return (
         <ContainerStyle>
             {children}
@@ -20,4 +20,4 @@ const ResultsContainer = ({children}:{children: React.ReactNode}) => {
     )
 }
 
-export default ResultsContainer
+export default HeaderContainer

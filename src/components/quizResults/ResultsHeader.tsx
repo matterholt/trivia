@@ -1,5 +1,5 @@
 
-import ResultsContainer from './ResultsContainer'
+import HeaderContainer from './HeaderContainer'
     import ActionButton from "../ActionButton"
 
 
@@ -34,16 +34,16 @@ grid-row: 1 / span2;
 `
 const ResultsHeader = ({answeredCorrectly,totalQuestionCount ,setAnsweredToQuestions}:ResultsHeaderProps) => {
     return(
-<ResultsContainer>
+        <HeaderContainer>
             <h2>Results Page</h2>
              <p>You scored {answeredCorrectly}/{totalQuestionCount}</p>
             <ActionButton
                 styleAttributes = {defaultButtonStyle}
-                isDisabled={false}
+                isdisabled={false}
                 clickAction={()=>setAnsweredToQuestions([])}
                 name="Play Again"
                 >Play<br/> Again </ActionButton>
-        </ResultsContainer>
+        </HeaderContainer>
     )
 }
 export default ResultsHeader
