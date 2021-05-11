@@ -13,7 +13,8 @@ margin-bottom:10px;
 padding:5px;
 font-size:1rem;
 border-radius:10px;
-max-width:375px;
+min-width:375px;
+width: min-content;
 `
 
 interface ResultCardProps{

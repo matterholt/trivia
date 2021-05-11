@@ -9,6 +9,7 @@ interface questionCardProps {
 const QuestionStyleCard = styled.div`
 padding: 15px 25px;
 border-radius: 15px;
+max-width:385px;
 display: flex;
 flex-direction: column;
 justify-content: center;
