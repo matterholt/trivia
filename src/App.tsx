@@ -39,14 +39,14 @@ const WebRoute = ({ children }: {children: JSX.Element| JSX.Element[]}) => {
 }
 
 function App() {
-  const [question, setQuestion] = useState(sampleData)
+  const [question, setQuestion] = useState([])
   
   
   return (
     <Router>
       <WebRoute>
         <Route exact path="/">
-          <Home trivia={question} triviaUpdate= {setQuestion}/>
+          <Home setQuestion={ setQuestion}/>
         </Route>
         <Route exact path="/QuizQuestion">
           <QuizQuestion triviaQuestion={ question }/>
