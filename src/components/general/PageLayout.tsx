@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { AnswerContextProvider } from "../context/userAnswerContext"
-import BackGround from "../assets/background_v2.png"
+import { AnswerContextProvider } from "../../context/userAnswerContext"
+import BackGround from "../../assets/background_v2.png"
 
 const Layout = styled.div`
   min-height: 100vh;
