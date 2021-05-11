@@ -29,7 +29,7 @@ const AnsweredQuestions = ({ userAnswers }:UserAnswers) => {
  
     return (
         <ResultContainer>
-            {userAnswers.map((x) => <QuestionResults userAnswerInput={x } />)}
+            {userAnswers.map((x) => <QuestionResults key={x.questionId}userAnswerInput={x } />)}
         </ResultContainer>
         
 
