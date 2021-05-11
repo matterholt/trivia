@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 
 import userAnswerIs from "../../utils/userAnswerIs"
 import CurrentQuestion from "../quizScreen/CurrentQuestion"
-import ActionButton from "../ActionButton"
-import NextArrowSVG from '../NextArrowSVG'
+import ActionButton from "../general/ActionButton"
+import NextArrowSVG from '../general/NextArrowSVG'
 
 import { useAnsweredQuestions } from "../../context/userAnswerContext"
 interface TriviaQuestionProps {

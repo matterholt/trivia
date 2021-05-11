@@ -1,6 +1,6 @@
 
 import HeaderContainer from './HeaderContainer'
-    import ActionButton from "../ActionButton"
+    import ActionButton from "../general/ActionButton"
 
 
 interface ResultsHeaderProps{
