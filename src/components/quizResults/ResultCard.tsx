@@ -8,9 +8,9 @@ const ResultCardStyle = styled.li<CardProps>`
     display: grid;
     background-color: ${(props) => (props.isCorrect ? '#bbe1bb' : '#f4c2c2')};
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 15px;
     font-size: 1rem;
-    border-radius: 10px;
+    border-radius: 15px;
     min-width: 375px;
     width: min-content;
 `

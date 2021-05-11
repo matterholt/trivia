@@ -12,7 +12,7 @@ const HomeCard = styled.div`
     padding: 10px 30px;
     margin: 5px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.9);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 `

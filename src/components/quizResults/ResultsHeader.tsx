@@ -11,7 +11,7 @@ grid-column: 2;
 grid-row: 1 / span2;
   padding: 1em 3.2em;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: scale 100ms ease-in-out;
   text-align: center;
   margin: 20px;

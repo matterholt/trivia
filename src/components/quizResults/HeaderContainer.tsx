@@ -7,7 +7,7 @@ const ContainerStyle = styled.header`
     justify-items: center;
     grid-template-columns: 1fr 150px;
     grid-template-rows: 1fr 50px;
-    border-radius: 5px;
+    border-radius: 15px;
     margin: 15px 0;
 `
 

@@ -24,6 +24,7 @@ const QuestionResult = styled.p<QResultProps>`
     grid-row: 2;
     grid-column: 1;
     font-weight: 800;
+    align-self: center;
     text-transform: uppercase;
     color: ${(props) => (props.isCorrect ? '#4f5f4f;' : '#b51111')};
     font-size: 1rem;
