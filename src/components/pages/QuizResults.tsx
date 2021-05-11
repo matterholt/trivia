@@ -14,17 +14,16 @@ flex-flow:column;
 `
 
 const QuizResults = () => {
-    const { answeredToQuestions, setAnsweredToQuestions } = useAnsweredQuestions()
+  const { answeredToQuestions, setAnsweredToQuestions } = useAnsweredQuestions()
+  
     const totalQuestionCount = answeredToQuestions.length
-    const didClearAnswer = 0 === totalQuestionCount
+  
     const answeredCorrectly  = correctAnswerCount(answeredToQuestions)
 
-    if(didClearAnswer || !totalQuestionCount) {
+    if(!totalQuestionCount) {
         return (<Redirect to="/" />)
     }
-  
-
-
+ 
     return (
       <ResultsLayout>
         <ResultsHeader
@@ -33,7 +32,6 @@ const QuizResults = () => {
           setAnsweredToQuestions={setAnsweredToQuestions }
          />
           <AnsweredQuestions userAnswers={answeredToQuestions} />
-      
         </ResultsLayout>
     )
 }
