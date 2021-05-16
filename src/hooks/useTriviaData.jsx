@@ -40,13 +40,12 @@ function useTriviaData() {
               questionAmount: 10,
             triviaType: 'boolean',
         }
-        
-
         async function getTriviaQuestions() {
             dispatch({ type: 'pending' })
    
             client(triviaSettings).then(
-                (triviaQuestions) =>{
+                (triviaQuestions) => {
+                    console.log(triviaQuestions['results'])
                     dispatch({
                         type: 'success',
                         payload: triviaQuestions['results'],
@@ -57,8 +56,8 @@ function useTriviaData() {
                 }
             )
         }
-
         getTriviaQuestions()
+
     }
 
     return [data, fetchQuestion]

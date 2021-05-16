@@ -1,4 +1,5 @@
 import { useReducer } from 'react'
+import client from '../utils/apifetch'
 
 const initialState = {
     triviaQuestions: [],
@@ -45,25 +46,33 @@ function statusReducer(state:stateProp , action:ACTIONTYPE) {
 function useTriviaData() {
     const [data, dispatch] = useReducer(statusReducer, initialState)
 
-    function fetchQuestion(triviaOptions:any) {
-        const { triviaType, questionAmount, triviaDifficulty } = triviaOptions
-        const API = `https://opentdb.com/api.php?amount=${questionAmount}&difficulty=${triviaDifficulty}&type=${triviaType.type}`
 
+    function fetchQuestion() {
+        const triviaSettings = {
+              triviaDifficulty: 'hard',
+              questionAmount: 10,
+            triviaType: 'boolean',
+        }
         async function getTriviaQuestions() {
             dispatch({ type: 'pending' })
-            try {
-                const response = await fetch(API)
-                if (response.ok) {
-                    const json = await response.json()
-                    dispatch({ type: 'success', payload: json['results'] })
+   
+            client(triviaSettings).then(
+                (triviaQuestions) => {
+                    console.log(triviaQuestions['results'])
+                    dispatch({
+                        type: 'success',
+                        payload: triviaQuestions['results'],
+                    })
+                },
+                error => {
+                    dispatch({ type: 'error', payload: error })
                 }
-            } catch (error) {
-                dispatch({ type: 'error', payload: error })
-            }
+            )
         }
-
         getTriviaQuestions()
+
     }
+
 
     return [data, fetchQuestion]
 }
