@@ -15,9 +15,18 @@ const WebRoute = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
         </Router>
     )
 }
+interface iTrivQuest {
+        category: string
+    correct_answer: string
+    difficulty: string
+    incorrect_answers: string[]
+    question: string
+    type: string
+}
+
 
 function App() {
-    const [question, setQuestion] = useState([])
+    const [question, setQuestion] = useState<iTrivQuest[]>([])
 
     return (
         <Router>

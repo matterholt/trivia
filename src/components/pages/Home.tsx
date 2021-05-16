@@ -17,7 +17,7 @@ const HomeCard = styled.div`
     backdrop-filter: blur(10px);
 `
 
-const Home = ({ setQuestion }: { setQuestion: any }) => {
+const Home = ({ setQuestion }:any) => {
     const triviaOptions = {
         triviaType: { type: 'boolean', typeName: 'True or False' },
         questionAmount: 10,
@@ -42,7 +42,6 @@ const Home = ({ setQuestion }: { setQuestion: any }) => {
         )
     }
     if (state.status === 'pending') {
-        console.log('it is pending request')
         return (
             <HomeCard>
                 <h2>Getting Questions Ready</h2>
