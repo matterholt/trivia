@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-const isdisabled = {
+const unableToSelect = {
     lineColor: 'var(--main-blue)',
     fillColor: 'var(--main-ltBlue)',
 }
-const able = { lineColor: 'var(--main-blue)', fillColor: 'white' }
+const ableToSelect = { lineColor: 'var(--main-blue)', fillColor: 'white' }
 
-function NextArrowSVG(props: any) {
-    const { lineColor, fillColor } = props.isdisabled ? isdisabled : able
+function NextArrowSVG({activeStyle}:{activeStyle:boolean}) {
+    const { lineColor, fillColor } = activeStyle ? unableToSelect : ableToSelect
 
     return (
         <svg
@@ -16,7 +16,7 @@ function NextArrowSVG(props: any) {
             viewBox="0 0 28 28"
             fill={fillColor}
             xmlns="http://www.w3.org/2000/svg"
-            {...props}
+          
         >
             <g filter="url(#prefix__filter0_d)">
                 <circle cx={14} cy={10} r={10} fill={fillColor} />

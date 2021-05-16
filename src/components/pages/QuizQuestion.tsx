@@ -80,7 +80,7 @@ const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
                 clickAction={confirmAnswer}
                 name="Next buttons"
             >
-                <NextArrowSVG isdisabled={userInputAnswer === ''} />
+                <NextArrowSVG activeStyle={userInputAnswer === ''} />
             </ActionButton>
         </QuestionLayout>
     )
