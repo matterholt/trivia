@@ -1,16 +1,27 @@
 import { useReducer } from 'react'
-import client from '../utils/apifetch'
 
 const initialState = {
     triviaQuestions: [],
     status: 'idle', //pending, success, error
     error: '',
 }
+interface stateProp {
+        triviaQuestions: any,
+    status: string
+    error: string,
+}
 
-function statusReducer(state, action) {
+type ACTIONTYPE =
+    | { type: 'pending' }
+    | { type: 'idle' }
+    | { type: 'success', payload:any }
+    | { type: 'error',payload:string }
+
+
+function statusReducer(state:stateProp , action:ACTIONTYPE) {
     switch (action.type) {
         case 'idle': {
-            return { ...state, triviaQuestions: [], status: 'idle', error: '' }
+            return { ...state,  triviaQuestions: [], status: 'idle', error: '' }
         }
         case 'pending': {
             return { ...state, status: 'pending' }
@@ -34,28 +45,21 @@ function statusReducer(state, action) {
 function useTriviaData() {
     const [data, dispatch] = useReducer(statusReducer, initialState)
 
-    function fetchQuestion() {
-        const triviaSettings = {
-              triviaDifficulty: 'hard',
-              questionAmount: 10,
-            triviaType: 'boolean',
-        }
-        
+    function fetchQuestion(triviaOptions:any) {
+        const { triviaType, questionAmount, triviaDifficulty } = triviaOptions
+        const API = `https://opentdb.com/api.php?amount=${questionAmount}&difficulty=${triviaDifficulty}&type=${triviaType.type}`
 
         async function getTriviaQuestions() {
             dispatch({ type: 'pending' })
-   
-            client(triviaSettings).then(
-                (triviaQuestions) =>{
-                    dispatch({
-                        type: 'success',
-                        payload: triviaQuestions['results'],
-                    })
-                },
-                error => {
-                    dispatch({ type: 'error', payload: error })
+            try {
+                const response = await fetch(API)
+                if (response.ok) {
+                    const json = await response.json()
+                    dispatch({ type: 'success', payload: json['results'] })
                 }
-            )
+            } catch (error) {
+                dispatch({ type: 'error', payload: error })
+            }
         }
 
         getTriviaQuestions()
