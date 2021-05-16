@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { AnswerContextProvider } from '../../context/userAnswerContext'
-import BackGround from '../../assets/background_v2.png'
 
 const Layout = styled.div`
     min-height: 100vh;
@@ -8,18 +7,16 @@ const Layout = styled.div`
     display: grid;
     place-items: center;
     font-size: calc(10px + 2vmin);
+    background: rgb(2,0,36);
+    background:var(--gradient-color)
 `
-
-const bgImage = {
-    backgroundImage: `url(${BackGround})`,
-}
 const PageLayout = ({
     children,
 }: {
     children: JSX.Element | JSX.Element[]
 }) => {
     return (
-        <Layout style={bgImage}>
+        <Layout>
             <AnswerContextProvider>{children}</AnswerContextProvider>
         </Layout>
     )

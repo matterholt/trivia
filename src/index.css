@@ -2,6 +2,7 @@
     --main-blue: #2c4869;
     --main-ltBlue: #9caabb;
     --main-lite: #eaecef;
+    --gradient-color: linear-gradient(108deg, rgba(2, 0, 36, 1) 0%, rgba(44, 72, 105, 1) 35%, rgba(156, 170, 187, 1) 100%)
 }
 body {
     margin: 0;
