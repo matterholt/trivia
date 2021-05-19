@@ -30,8 +30,7 @@ const Home = ({ setQuestion }:any) => {
             <HomeCard>
                 <h1>Welcome to the Trivia Challenge</h1>
                 <p>
-                    You will be precented with {triviaOptions.questionAmount}{' '}
-                    {triviaOptions.triviaType.typeName} questions
+                    You will be precented with <span>{triviaOptions.questionAmount}</span> <span>{triviaOptions.triviaType.typeName}</span> questions
                 </p>
                 <StartButton
                     buttonText="Begin"
