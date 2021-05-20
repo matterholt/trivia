@@ -1,20 +1,21 @@
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
-
+import App from '../App'
 import data from './mockdata'
 
-import App from '../App'
-
-const server = setupServer(
-    rest.get('/greeting', (req, res, ctx) => {
-        return res(ctx.json(data))
-    })
-)
-beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
-afterAll(() => server.close())
+// const server = setupServer(
+//     rest.get(
+//         '/https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
+//         (req, res, ctx) => {
+//             return res(ctx.json(data))
+//         }
+//     )
+// )
+// beforeAll(() => server.listen())
+// afterEach(() => server.resetHandlers())
+// afterAll(() => server.close())
 
 test('Trivia Home Page', () => {
     render(<App />)
@@ -33,9 +34,8 @@ test('Trivia Waiting for Data',() => {
     expect(screen.getByText(/Getting Questions/i)).toBeInTheDocument()
 }
 )
-test('Trivia question', async() => {
+test('Trivia  Data', async() => {
     render(<App />)
     fireEvent.click(screen.getByRole('button', { name: 'Begin' }))
-    
-    await waitFor(() => screen.debug())
+
 })

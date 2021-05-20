@@ -48,6 +48,7 @@ const Home = ({ setQuestion }:any) => {
         )
     }
     if (state.status === 'success') {
+        // warning in browser
         setQuestion(state.triviaQuestions)
         return <Redirect to="/QuizQuestion" />
     }

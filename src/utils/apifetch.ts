@@ -1,5 +1,5 @@
 
-
+let mainLink = process.env.REACT_APP_TRIVIA_API
 
 interface initialSettingProp {
     triviaDifficulty: string,
@@ -16,12 +16,10 @@ export default function client(
         ...customConfig,
     }
     let { triviaDifficulty, questionAmount, triviaType } = triviaSettings
-    
-
-    const settings = `amount=${questionAmount}&difficulty=${triviaDifficulty}&type=${triviaType}`
+    const settings = `.php?amount=${questionAmount}&difficulty=${triviaDifficulty}&type=${triviaType}`
 
     return window
-        .fetch(`${process.env.REACT_APP_TRIVIA_API}.php?${settings}`, config)
+        .fetch(`${mainLink}${settings}`, config)
         .then(async response => {
             if (response.ok) {
                 return await response.json()

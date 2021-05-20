@@ -45,7 +45,6 @@ function useTriviaData() {
    
             client(triviaSettings).then(
                 (triviaQuestions) => {
-                    console.log(triviaQuestions['results'])
                     dispatch({
                         type: 'success',
                         payload: triviaQuestions['results'],
