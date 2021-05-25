@@ -36,13 +36,13 @@ function useTriviaData() {
 
     function fetchQuestion() {
         const triviaSettings = {
-              triviaDifficulty: 'hard',
-              questionAmount: 10,
+            triviaDifficulty: 'hard',
+            questionAmount: 10,
             triviaType: 'boolean',
         }
         async function getTriviaQuestions() {
             dispatch({ type: 'pending' })
-   
+
             client(triviaSettings).then(
                 (triviaQuestions) => {
                     dispatch({
@@ -50,13 +50,12 @@ function useTriviaData() {
                         payload: triviaQuestions['results'],
                     })
                 },
-                error => {
+                (error) => {
                     dispatch({ type: 'error', payload: error })
                 }
             )
         }
         getTriviaQuestions()
-
     }
 
     return [data, fetchQuestion]
