@@ -37,7 +37,7 @@ const AnswersContainer = styled.div`
 
 const QuestionResults = ({ userAnswerInput }: UserAnswer) => {
     const {
-        questionId,
+
         question,
         userDidAnswer,
         correctAnswer,
@@ -47,7 +47,7 @@ const QuestionResults = ({ userAnswerInput }: UserAnswer) => {
     const isCorrect = userDidAnswer === 'correct'
 
     return (
-        <ResultCard key={questionId} isCorrect={isCorrect}>
+        <ResultCard isCorrect={isCorrect}>
             <Question> {question}</Question>
 
             <QuestionResult isCorrect={isCorrect}>

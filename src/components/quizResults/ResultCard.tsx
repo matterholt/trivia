@@ -18,11 +18,10 @@ const ResultCardStyle = styled.li<CardProps>`
 interface ResultCardProps {
     children: React.ReactNode
     isCorrect: boolean
-    key: number
 }
-const ResultCard = ({ children, key, isCorrect }: ResultCardProps) => {
+const ResultCard = ({ children, isCorrect }: ResultCardProps) => {
     return (
-        <ResultCardStyle key={key} isCorrect={isCorrect}>
+        <ResultCardStyle isCorrect={isCorrect}>
             {children}
         </ResultCardStyle>
     )

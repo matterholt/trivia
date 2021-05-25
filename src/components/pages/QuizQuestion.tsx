@@ -30,8 +30,7 @@ const QuestionLayout = styled.div`
 const QuizQuestion = ({ triviaQuestion }: TriviaQuestionProps) => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0)
     const [userInputAnswer, setUserInputAnswer] = useState('')
-    const { answeredToQuestions, setAnsweredToQuestions } =
-        useAnsweredQuestions()
+    const { answeredToQuestions, setAnsweredToQuestions } = useAnsweredQuestions()
     const triviaQuestionLength = triviaQuestion.length
     const didAnswerAllQuestions = currentQuestionId === triviaQuestionLength
 
