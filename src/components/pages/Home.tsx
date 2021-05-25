@@ -25,12 +25,14 @@ const Home = ({ setQuestion }:any) => {
     }
     const [state, fetchData] = useTriviaData()
 
-    if (state.status === 'idle') {
+
+    if (state.status === 'error') {
+
         return (
-            <HomeCard>
+                       <HomeCard>
                 <h1>Welcome to the Trivia Challenge</h1>
                 <p>
-                    You will be precented with <span>{triviaOptions.questionAmount}</span> <span>{triviaOptions.triviaType.typeName}</span> questions
+                    oops, try again...
                 </p>
                 <StartButton
                     buttonText="Begin"
@@ -53,7 +55,19 @@ const Home = ({ setQuestion }:any) => {
         return <Redirect to="/QuizQuestion" />
     }
 
-    return null
+     return (
+            <HomeCard>
+                <h1>Welcome to the Trivia Challenge</h1>
+                <p>
+                    You will be precented with <span>{triviaOptions.questionAmount}</span> <span>{triviaOptions.triviaType.typeName}</span> questions
+                </p>
+                <StartButton
+                    buttonText="Begin"
+                    onClick={() => fetchData(triviaOptions)}
+                />
+                <p>Can you score 100%</p>
+            </HomeCard>
+        )
 }
 
 export default Home
